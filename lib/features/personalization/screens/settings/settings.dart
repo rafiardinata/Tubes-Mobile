@@ -9,6 +9,7 @@ import 'package:tubes_mobile/common/widgets/list_tiles/user_profile_tile.dart';
 import 'package:tubes_mobile/common/widgets/texts/section_heading.dart';
 import 'package:tubes_mobile/features/personalization/screens/address/address.dart';
 import 'package:tubes_mobile/features/personalization/screens/profile/profile.dart';
+import 'package:tubes_mobile/features/shop/screens/order/order.dart';
 import 'package:tubes_mobile/utils/constants/colors.dart';
 import 'package:tubes_mobile/utils/constants/sizes.dart';
 
@@ -73,6 +74,7 @@ class SettingsScreen extends StatelessWidget {
                     icon: Iconsax.bag_tick,
                     title: 'My Orders',
                     subTitle: 'In-Progress & Completed Orders',
+                    onTap: () => Get.to(() => const OrderScreen()),
                   ),
                   TSettingsMenuTile(
                     icon: Iconsax.bank,
