@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/get_instance.dart';
-import 'package:tubes_mobile/features/authentication/controllers/onboarding_controller.dart';
+import 'package:tubes_mobile/features/authentication/controllers/onboarding/onboarding_controller.dart';
 import 'package:tubes_mobile/features/authentication/screens/widgets/onboarding_dot_navigation.dart';
 import 'package:tubes_mobile/features/authentication/screens/widgets/onboarding_next_button.dart';
 import 'package:tubes_mobile/features/authentication/screens/widgets/onboarding_page.dart';

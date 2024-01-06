@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:tubes_mobile/common/widgets/image_text_widgets/vertical_image_texts.dart';
+import 'package:tubes_mobile/features/shop/screens/sub_category/sub_categories.dart';
 import 'package:tubes_mobile/utils/constants/image_strings.dart';
 
 class THomeCategories extends StatelessWidget {
@@ -19,7 +21,7 @@ class THomeCategories extends StatelessWidget {
           return TVerticalImageText(
             image: TImages.clothIcon,
             title: 'Shoes',
-            onTap: () {},
+            onTap: () => Get.to(() => const SubCategoriesScreen()),
           );
         },
       ),

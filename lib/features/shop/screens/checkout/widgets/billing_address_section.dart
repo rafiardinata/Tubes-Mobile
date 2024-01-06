@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tubes_mobile/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:tubes_mobile/common/widgets/texts/section_heading.dart';
-import 'package:tubes_mobile/utils/constants/colors.dart';
-import 'package:tubes_mobile/utils/constants/image_strings.dart';
 import 'package:tubes_mobile/utils/constants/sizes.dart';
 import 'package:tubes_mobile/utils/helpers/helper_functions.dart';
 
