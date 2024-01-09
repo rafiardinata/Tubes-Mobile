@@ -7,6 +7,7 @@ import 'package:tubes_mobile/common/widgets/custom_shapes/containers/primary_hea
 import 'package:tubes_mobile/common/widgets/list_tiles/settings_menu_tile.dart';
 import 'package:tubes_mobile/common/widgets/list_tiles/user_profile_tile.dart';
 import 'package:tubes_mobile/common/widgets/texts/section_heading.dart';
+import 'package:tubes_mobile/data/repositories/authentication/authentication_repository.dart';
 import 'package:tubes_mobile/features/personalization/screens/address/address.dart';
 import 'package:tubes_mobile/features/personalization/screens/profile/profile.dart';
 import 'package:tubes_mobile/features/shop/screens/order/order.dart';
@@ -131,7 +132,8 @@ class SettingsScreen extends StatelessWidget {
                   SizedBox(
                     width: double.infinity,
                     child: OutlinedButton(
-                      onPressed: () {},
+                      onPressed: () =>
+                          AuthenticationRepository.instance.logout(),
                       child: const Text('Logout'),
                     ),
                   ),

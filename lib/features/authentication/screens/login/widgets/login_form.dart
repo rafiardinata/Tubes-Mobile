@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:tubes_mobile/features/authentication/controllers/login/login_controller.dart';
 import 'package:tubes_mobile/features/authentication/screens/password_configuration/forgot_password.dart';
 import 'package:tubes_mobile/features/authentication/screens/signup/signup.dart';
 import 'package:tubes_mobile/navigation_menu.dart';
+import 'package:tubes_mobile/utils/validators/validation.dart';
 
 import '../../../../../utils/constants/sizes.dart';
 import '../../../../../utils/constants/text_strings.dart';
@@ -15,33 +17,41 @@ class TLoginForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(LoginController());
     return Form(
+      key: controller.loginFormKey,
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: TSizes.spaceBtwSections),
         child: Column(
           children: [
             // Email
             TextFormField(
+              controller: controller.email,
+              validator: (value) => TValidator.validateEmail(value),
               decoration: InputDecoration(
                 prefixIcon: Icon(Iconsax.direct_right),
-                // labelText: TTexts.email,
-                label: Text(
-                  TTexts.email,
-                  style: Theme.of(context).textTheme.titleMedium,
-                ),
+                labelText: TTexts.email,
               ),
             ),
             const SizedBox(height: TSizes.spaceBtwInputFields),
 
             // Password
-            TextFormField(
-              decoration: InputDecoration(
-                prefixIcon: Icon(Iconsax.password_check),
-                label: Text(
-                  TTexts.password,
-                  style: Theme.of(context).textTheme.titleMedium,
+            Obx(
+              () => TextFormField(
+                controller: controller.password,
+                validator: (value) => TValidator.validatePassword(value),
+                obscureText: controller.hidePassword.value,
+                decoration: InputDecoration(
+                  labelText: TTexts.password,
+                  prefixIcon: Icon(Iconsax.password_check),
+                  suffixIcon: IconButton(
+                    onPressed: () => controller.hidePassword.value =
+                        !controller.hidePassword.value,
+                    icon: Icon(controller.hidePassword.value
+                        ? Iconsax.eye_slash
+                        : Iconsax.eye),
+                  ),
                 ),
-                suffixIcon: Icon(Iconsax.eye_slash),
               ),
             ),
             const SizedBox(height: TSizes.spaceBtwInputFields / 2),
@@ -53,7 +63,12 @@ class TLoginForm extends StatelessWidget {
                 // Remember Me
                 Row(
                   children: [
-                    Checkbox(value: true, onChanged: (value) {}),
+                    Obx(
+                      () => Checkbox(
+                          value: controller.rememberMe.value,
+                          onChanged: (value) => controller.rememberMe.value =
+                              !controller.rememberMe.value),
+                    ),
                     const Text(TTexts.rememberMe),
                   ],
                 ),
@@ -71,7 +86,7 @@ class TLoginForm extends StatelessWidget {
             SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                    onPressed: () => Get.to(() => const NavigationMenu()),
+                    onPressed: () => controller.emailAndPasswordSignIn(),
                     child: const Text(TTexts.signIn))),
             const SizedBox(height: TSizes.spaceBtwItems),
 

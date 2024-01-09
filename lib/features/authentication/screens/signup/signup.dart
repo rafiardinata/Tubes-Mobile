@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:tubes_mobile/common/widgets/appbar/appbar.dart';
 import 'package:tubes_mobile/common/widgets/login_signup/form_divider.dart';
 import 'package:tubes_mobile/common/widgets/login_signup/social_button.dart';
 import 'package:tubes_mobile/features/authentication/screens/signup/widgets/signup_form.dart';

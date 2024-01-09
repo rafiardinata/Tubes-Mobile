@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tubes_mobile/common/widgets/loaders/loaders.dart';
@@ -26,23 +27,31 @@ class SignupController extends GetxController {
   // SIGNUP
   void signup() async {
     try {
-      // Star Loading
+      // Start Loading
       TFullScreenLoader.openLoadingDialog(
-          'We are processing your information...', TImages.verifyIllustration);
+          'We are processing your information...', TImages.docerAnimation);
 
       // Check Internet Connect
       final isConnected = await NetworkManager.instance.isConnected();
-      if (!isConnected) return;
+      if (!isConnected) {
+        // Remove Loader
+        TFullScreenLoader.stopLoading();
+        return;
+      }
 
       // Form Validation
-      if (signupFormKey.currentState!.validate()) return;
+      if (!signupFormKey.currentState!.validate()) {
+        // Remove Loader
+        TFullScreenLoader.stopLoading();
+        return;
+      }
 
       // Privacy Policy Check
       if (!privacyPolicy.value) {
         TLoaders.warningSnackBar(
           title: 'Accept Privacy Policy',
           message:
-              'In order to Create Account, you must have to accept the Privacy Policy & Terms of Use',
+              'In Order to create account, you must have to read and accept the Privacy Policy & Terms of Use',
         );
         return;
       }
@@ -75,13 +84,17 @@ class SignupController extends GetxController {
           message: 'Your account has been created! Verify email to continue.');
 
       // Move to Verify Email Screen
-      Get.to(() => const VerifyEmailScreen());
+      Get.to(
+        () => VerifyEmailScreen(
+          email: email.text.trim(),
+        ),
+      );
     } catch (e) {
-      // Show Error
-      TLoaders.errorSnackBar(title: 'Error', message: e.toString());
-    } finally {
       // Remove Loader
       TFullScreenLoader.stopLoading();
+
+      // Show Error
+      TLoaders.errorSnackBar(title: 'Error', message: e.toString());
     }
   }
 }

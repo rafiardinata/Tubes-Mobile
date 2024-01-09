@@ -29,10 +29,7 @@ class TSignupForm extends StatelessWidget {
                       TValidator.validateEmptyText('First Name', value),
                   expands: false,
                   decoration: InputDecoration(
-                    label: Text(
-                      TTexts.firstName,
-                      style: Theme.of(context).textTheme.titleMedium,
-                    ),
+                    labelText: TTexts.firstName,
                     prefixIcon: Icon(Iconsax.user),
                   ),
                 ),
@@ -46,11 +43,7 @@ class TSignupForm extends StatelessWidget {
                       TValidator.validateEmptyText('Last Name', value),
                   expands: false,
                   decoration: InputDecoration(
-                    label: Text(
-                      TTexts.lastName,
-                      style: Theme.of(context).textTheme.titleMedium,
-                    ),
-                    labelStyle: Theme.of(context).textTheme.titleMedium,
+                    labelText: TTexts.lastName,
                     prefixIcon: Icon(Iconsax.user),
                   ),
                 ),
@@ -66,10 +59,7 @@ class TSignupForm extends StatelessWidget {
                 TValidator.validateEmptyText('Username', value),
             expands: false,
             decoration: InputDecoration(
-              label: Text(
-                TTexts.username,
-                style: Theme.of(context).textTheme.titleMedium,
-              ),
+              labelText: TTexts.username,
               prefixIcon: Icon(Iconsax.user_edit),
             ),
           ),
@@ -81,10 +71,7 @@ class TSignupForm extends StatelessWidget {
             validator: (value) => TValidator.validateEmail(value),
             // obscureText: true,
             decoration: InputDecoration(
-              label: Text(
-                TTexts.email,
-                style: Theme.of(context).textTheme.titleMedium,
-              ),
+              labelText: TTexts.email,
               prefixIcon: Icon(Iconsax.direct),
             ),
           ),
@@ -95,10 +82,7 @@ class TSignupForm extends StatelessWidget {
             controller: controller.phoneNumber,
             validator: (value) => TValidator.validatePhoneNumber(value),
             decoration: InputDecoration(
-              label: Text(
-                TTexts.phoneNumber,
-                style: Theme.of(context).textTheme.titleMedium,
-              ),
+              labelText: TTexts.phoneNumber,
               prefixIcon: Icon(Iconsax.call),
             ),
           ),
@@ -111,10 +95,7 @@ class TSignupForm extends StatelessWidget {
               validator: (value) => TValidator.validatePassword(value),
               obscureText: controller.hidePassword.value,
               decoration: InputDecoration(
-                label: Text(
-                  TTexts.password,
-                  style: Theme.of(context).textTheme.titleMedium,
-                ),
+                labelText: TTexts.password,
                 prefixIcon: Icon(Iconsax.password_check),
                 suffixIcon: IconButton(
                   onPressed: () => controller.hidePassword.value =

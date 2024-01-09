@@ -25,7 +25,10 @@ class DefaultFirebaseOptions {
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        return macos;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for macos - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -69,16 +72,5 @@ class DefaultFirebaseOptions {
     androidClientId: '346190268273-ta5o3scjoh8cpebfnf9pgsacq3itpun1.apps.googleusercontent.com',
     iosClientId: '346190268273-j70huh452dbt9inbc5dr3hgqndh4d0hp.apps.googleusercontent.com',
     iosBundleId: 'com.example.tubesMobile',
-  );
-
-  static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyBcZKjLeNB5cNSvs2pM6diwcVZgYyzi3CI',
-    appId: '1:346190268273:ios:33d7d8fdbf1c23ae2598d0',
-    messagingSenderId: '346190268273',
-    projectId: 'ecommerceapp-e6555',
-    storageBucket: 'ecommerceapp-e6555.appspot.com',
-    androidClientId: '346190268273-ta5o3scjoh8cpebfnf9pgsacq3itpun1.apps.googleusercontent.com',
-    iosClientId: '346190268273-tnflkcq03v4vot6d3e9bodruoj1ko82j.apps.googleusercontent.com',
-    iosBundleId: 'com.example.tubesMobile.RunnerTests',
   );
 }
